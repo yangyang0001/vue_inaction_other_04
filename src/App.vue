@@ -1,28 +1,53 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+    <div class="root">
+        <h1 ref="mine_h1_ref">App根组件</h1>
+        <p>
+            <button @click="change_color">修改根组件颜色为红色</button>
+            &nbsp;&nbsp;
+            <button @click="reset_left_count">重置Left.vue中的count值</button>
+        </p>
+        <Left ref="mine_left_ref"></Left>
+        
+    </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Left from "@/components/Left.vue";
+import Right from "@/components/Right.vue";
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+    
+    components: {
+        Left,
+        Right
+    },
+
+    data() {
+        return {
+            
+        };
+    },
+
+    mounted() {
+        
+    },
+
+    methods: {
+        change_color: function() {
+            this.$refs.mine_h1_ref.style.color = 'red';
+        },
+
+        reset_left_count: function() {
+            // console.log(this.$refs.mine_left_ref);
+            this.$refs.mine_left_ref.reset_count();
+        }
+    },
+};
 </script>
 
-<style lang="less">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+<style lang="less" scoped>
+.root {
+    padding: 5px 20px 260px 20px;
+    background-color: #b9bdb0;
 }
 </style>
